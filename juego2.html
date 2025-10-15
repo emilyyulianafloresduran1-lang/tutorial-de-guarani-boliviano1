@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Adivina el Número</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 40px;
+    user-select: none;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #5a2a27;
+    text-shadow: 1px 1px 3px #f0d7d5;
+  }
+  input[type=number] {
+    padding: 12px;
+    font-size: 1.2rem;
+    width: 120px;
+    border-radius: 8px;
+    border: 2px solid #f76c6c;
+    text-align: center;
+    margin-right: 10px;
+  }
+  button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #f76c6c;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(247, 108, 108, 0.5);
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #d45050;
+  }
+  #feedback {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5a2a27;
+    min-height: 40px;
+  }
+  #attempts {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #422020;
+  }
+  #resetBtn {
+    margin-top: 25px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 15px;
+    background-color: #27ae60;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px #27ae60;
+    display: none;
+  }
+  #resetBtn:hover {
+    background-color: #1e8449;
+  }
+</style>
+</head>
+<body>
+
+<h1>Adivina el Número</h1>
+
+<input type="number" id="guessInput" min="1" max="100" placeholder="1-100" />
+<button id="guessBtn">¡Adivinar!</button>
+
+<div id="feedback"></div>
+<div id="attempts"></div>
+
+<button id="resetBtn">Reiniciar Juego</button>
+
+<script>
+  const guessInput = document.getElementById('guessInput');
+  const guessBtn = document.getElementById('guessBtn');
+  const feedback = document.getElementById('feedback');
+  const attemptsDisplay = document.getElementById('attempts');
+  const resetBtn = document.getElementById('resetBtn');
+
+  let secretNumber;
+  let attempts;
+
+  function startGame() {
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+    attempts = 0;
+    feedback.textContent = '';
+    attemptsDisplay.textContent = '';
+    guessInput.disabled = false;
+    guessBtn.disabled = false;
+    resetBtn.style.display = 'none';
+    guessInput.value = '';
+    guessInput.focus();
+  }
+
+  function checkGuess() {
+    const guess = Number(guessInput.value);
+    if (!guess || guess < 1 || guess > 100) {
+      feedback.textContent = 'Por favor, ingresa un número entre 1 y 100.';
+      return;
+    }
+
+    attempts++;
+    if (guess === secretNumber) {
+      feedback.textContent = `¡Felicidades! Adivinaste el número ${secretNumber} en ${attempts} intento(s). 🎉`;
+      guessInput.disabled = true;
+      guessBtn.disabled = true;
+      resetBtn.style.display = 'inline-block';
+    } else if (guess < secretNumber) {
+      feedback.textContent = 'El número es más alto. ⬆️';
+    } else {
+      feedback.textContent = 'El número es más bajo. ⬇️';
+    }
+    attemptsDisplay.textContent = `Intentos: ${attempts}`;
+    guessInput.value = '';
+    guessInput.focus();
+  }
+
+  guessBtn.addEventListener('click', checkGuess);
+
+  guessInput.addEventListener('keyup', e => {
+    if (e.key === 'Enter') checkGuess();
+  });
+
+  resetBtn.addEventListener('click', startGame);
+
+  startGame();
+</script>
+
+</body>
+</html>

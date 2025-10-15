@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutorial Interactivo</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f0f7fa; margin:0; padding:0; text-align:center; }
+  header { background:#4CAF50; color:white; padding:20px 0; }
+  .tutorial-cats button { margin:5px; padding:10px 15px; cursor:pointer; border:none; border-radius:5px; background:#2196F3; color:white; font-weight:bold; }
+  .tutorial-step img { max-width:300px; margin-top:10px; }
+  .nav-buttons button { margin:10px; padding:10px 20px; cursor:pointer; border:none; border-radius:5px; background:#f44336; color:white; font-weight:bold; }
+  a.back { display:inline-block; margin-top:15px; text-decoration:none; color:#555; font-weight:bold; }
+</style>
+<script>
+const tutorialData = {
+  vocales:[
+    {titulo:"A", lectura:"a", imagen:"https://img.freepik.com/vector-premium/coleccion-disenos-estilizados-letra-varias-fuentes-estilos-incluidas-interpretaciones-florales-modernas_1103909-40615.jpg?semt=ais_incoming&w=740&q=80"},
+    {titulo:"E", lectura:"e", imagen:"https://img.freepik.com/vector-gratis/cute-elephant-in-e-alphabet-cartoon-vector-icon-illustration-animal-education-isolated-flat-vector_138676-15248.jpg?semt=ais_incoming&w=740&q=80"},
+    {titulo:"I", lectura:"i", imagen:"https://png.pngtree.com/png-vector/20191009/ourlarge/pngtree-letter-i-with-ornaments-vintage-upper-and-lower-case-png-image_54732.jpg"},
+    {titulo:"O", lectura:"o", imagen:"img/vocales/o.jpg"},
+    {titulo:"U", lectura:"u", imagen:"img/vocales/u.jpg"},
+    {titulo:"Y", lectura:"u gutural", imagen:"img/vocales/y.jpg"}
+  ],
+  numeros:[
+    {"numero":1, "guarani":"peteĩ", "lectura":"pe-te-ĩ"},
+    {"numero":2, "guarani":"mokõi", "lectura":"mo-ko-ĩ"},
+    {"numero":3, "guarani":"mbohapy", "lectura":"mbo-ha-py"},
+    {"numero":4, "guarani":"irundy", "lectura":"i-run-dy"},
+    {"numero":5, "guarani":"poteĩ", "lectura":"po-te-ĩ"},
+    {"numero":6, "guarani":"pokõi", "lectura":"po-ko-ĩ"},
+    {"numero":7, "guarani":"pokapya", "lectura":"po-ka-pya"},
+    {"numero":8, "guarani":"poapy", "lectura":"po-a-py"},
+    {"numero":9, "guarani":"paĩ", "lectura":"pa-ĩ"},
+    {"numero":10, "guarani":"pa", "lectura":"pa"},
+    {"numero":11, "guarani":"pa peteĩ", "lectura":"pa pe-te-ĩ"},
+    {"numero":12, "guarani":"pa mokõi", "lectura":"pa mo-ko-ĩ"},
+    {"numero":13, "guarani":"pa mbohapy", "lectura":"pa mbo-ha-py"},
+    {"numero":14, "guarani":"pa irundy", "lectura":"pa i-run-dy"},
+    {"numero":15, "guarani":"pa poteĩ", "lectura":"pa po-te-ĩ"},
+    {"numero":16, "guarani":"pa pokõi", "lectura":"pa po-ko-ĩ"},
+    {"numero":17, "guarani":"pa pokapya", "lectura":"pa po-ka-pya"},
+    {"numero":18, "guarani":"pa poapy", "lectura":"pa po-a-py"},
+    {"numero":19, "guarani":"pa paĩ", "lectura":"pa pa-ĩ"},
+    {"numero":20, "guarani":"mokõipa", "lectura":"mo-kõi-pa"},
+    {"numero":21, "guarani":"mokõipa peteĩ", "lectura":"mo-kõi-pa pe-te-ĩ"},
+    {"numero":22, "guarani":"mokõipa mokõi", "lectura":"mo-kõi-pa mo-ko-ĩ"},
+    {"numero":23, "guarani":"mokõipa mbohapy", "lectura":"mo-kõi-pa mbo-ha-py"},
+    {"numero":24, "guarani":"mokõipa irundy", "lectura":"mo-kõi-pa i-run-dy"},
+    {"numero":25, "guarani":"mokõipa poteĩ", "lectura":"mo-kõi-pa po-te-ĩ"},
+    {"numero":26, "guarani":"mokõipa pokõi", "lectura":"mo-kõi-pa po-ko-ĩ"},
+    {"numero":27, "guarani":"mokõipa pokapya", "lectura":"mo-kõi-pa po-ka-pya"},
+    {"numero":28, "guarani":"mokõipa poapy", "lectura":"mo-kõi-pa po-a-py"},
+    {"numero":29, "guarani":"mokõipa paĩ", "lectura":"mo-kõi-pa pa-ĩ"},
+    {"numero":30, "guarani":"mbohapypa", "lectura":"mbo-ha-py-pa"},
+    {"numero":40, "guarani":"irundypa", "lectura":"i-run-dy-pa"},
+    {"numero":50, "guarani":"potepa", "lectura":"po-te-pa"},
+    {"numero":60, "guarani":"pokõipa", "lectura":"po-kõi-pa"},
+    {"numero":70, "guarani":"pokapyrapa", "lectura":"po-ka-py-ra-pa"},
+    {"numero":80, "guarani":"poapyra", "lectura":"po-a-py-ra"},
+    {"numero":90, "guarani":"paipapa", "lectura":"pa-i-pa-pa"},
+    {"numero":100, "guarani":"peteĩ hekáro", "lectura":"pe-te-ĩ he-ká-ro"},
+    {"numero":110, "guarani":"peteĩ hekáro pa", "lectura":"pe-te-ĩ he-ká-ro pa"},
+    {"numero":120, "guarani":"peteĩ hekáro mokõi", "lectura":"pe-te-ĩ he-ká-ro mo-ko-ĩ"},
+    {"numero":130, "guarani":"peteĩ hekáro mbohapy", "lectura":"pe-te-ĩ he-ká-ro mbo-ha-py"},
+    {"numero":140, "guarani":"peteĩ hekáro irundy", "lectura":"pe-te-ĩ he-ká-ro i-run-dy"},
+    {"numero":150, "guarani":"peteĩ hekáro poteĩ", "lectura":"pe-te-ĩ he-ká-ro po-te-ĩ"},
+    {"numero":160, "guarani":"peteĩ hekáro pokõi", "lectura":"pe-te-ĩ he-ká-ro po-ko-ĩ"},
+    {"numero":170, "guarani":"peteĩ hekáro pokapya", "lectura":"pe-te-ĩ he-ká-ro po-ka-pya"},
+    {"numero":180, "guarani":"peteĩ hekáro poapy", "lectura":"pe-te-ĩ he-ká-ro po-a-py"},
+    {"numero":190, "guarani":"peteĩ hekáro paĩ", "lectura":"pe-te-ĩ he-ká-ro pa-ĩ"},
+    {"numero":200, "guarani":"mokõi hekáro", "lectura":"mo-kõi he-ká-ro"},
+    {"numero":300, "guarani":"mbohapy hekáro", "lectura":"mbo-ha-py he-ká-ro"},
+    {"numero":400, "guarani":"irundy hekáro", "lectura":"i-run-dy he-ká-ro"},
+    {"numero":500, "guarani":"poteĩ hekáro", "lectura":"po-te-ĩ he-ká-ro"}
+  ],
+  abecedario:[
+    {titulo:"A", lectura:"a", imagen:"img/perro.jpg"},
+    {titulo:"B", lectura:"be", imagen:"img/perro.jpg"},
+    {titulo:"C", lectura:"ce", imagen:"img/perro.jpg"},
+    {titulo:"D", lectura:"de", imagen:"img/perro.jpg"},
+    {titulo:"E", lectura:"e", imagen:"img/perro.jpg"},
+    {titulo:"F", lectura:"efe", imagen:"img/perro.jpg"},
+    {titulo:"G", lectura:"ge", imagen:"img/perro.jpg"},
+    {titulo:"H", lectura:"hache", imagen:"img/perro.jpg"},
+    {titulo:"I", lectura:"i", imagen:"img/perro.jpg"},
+    {titulo:"J", lectura:"jota", imagen:"img/perro.jpg"},
+    {titulo:"K", lectura:"ka", imagen:"img/perro.jpg"},
+    {titulo:"L", lectura:"ele", imagen:"img/perro.jpg"},
+    {titulo:"M", lectura:"eme", imagen:"img/perro.jpg"},
+    {titulo:"N", lectura:"ene", imagen:"img/perro.jpg"},
+    {titulo:"Ñ", lectura:"eñe", imagen:"img/perro.jpg"},
+    {titulo:"O", lectura:"o", imagen:"img/perro.jpg"},
+    {titulo:"P", lectura:"pe", imagen:"img/perro.jpg"},
+    {titulo:"Q", lectura:"cu", imagen:"img/perro.jpg"},
+    {titulo:"R", lectura:"erre", imagen:"img/perro.jpg"},
+    {titulo:"S", lectura:"ese", imagen:"img/perro.jpg"},
+    {titulo:"T", lectura:"te", imagen:"img/perro.jpg"},
+    {titulo:"U", lectura:"u", imagen:"img/perro.jpg"},
+    {titulo:"V", lectura:"uve", imagen:"img/perro.jpg"},
+    {titulo:"W", lectura:"uve doble", imagen:"img/perro.jpg"},
+    {titulo:"X", lectura:"equis", imagen:"img/perro.jpg"},
+    {titulo:"Y", lectura:"i griega", imagen:"img/perro.jpg"},
+    {titulo:"Z", lectura:"zeta", imagen:"img/perro.jpg"}
+  ],
+  saludos:[
+    { "titulo": "Hola", "lectura": "Mba'éichapa", "imagen": "img/saludo.jpg" },
+    { "titulo": "Buenos días", "lectura": "Mba'éichapa ndepyhareve", "imagen": "img/saludo.jpg" },
+    { "titulo": "Buenas tardes", "lectura": "Mba'éichapa ndeasaje", "imagen": "img/saludo.jpg" },
+    { "titulo": "Buenas noches", "lectura": "Mba'éichapa ndepyhare", "imagen": "img/saludo.jpg" },
+    { "titulo": "Adiós", "lectura": "Jajoechapeve / Jajotopata", "imagen": "img/saludo.jpg" },
+    { "titulo": "Hasta mañana", "lectura": "Ko’ẽrõ peve", "imagen": "img/saludo.jpg" },
+    { "titulo": "Nos vemos luego", "lectura": "Añetehápe jajotopata", "imagen": "img/saludo.jpg" },
+    { "titulo": "¿Cómo estás?", "lectura": "Mba’éichapa reime?", "imagen": "img/saludo.jpg" },
+    { "titulo": "Estoy bien", "lectura": "Iporã chea", "imagen": "img/saludo.jpg" },
+    { "titulo": "Gracias", "lectura": "Aguyjevete", "imagen": "img/saludo.jpg" },
+    { "titulo": "Muchas gracias", "lectura": "Aguyje eterei", "imagen": "img/saludo.jpg" },
+    { "titulo": "De nada", "lectura": "Nderehecháiva", "imagen": "img/saludo.jpg" },
+    { "titulo": "Por favor", "lectura": "Ndéve guarã", "imagen": "img/saludo.jpg" },
+    { "titulo": "Disculpa", "lectura": "Eñyrõ", "imagen": "img/saludo.jpg" },
+    { "titulo": "Perdón", "lectura": "Eñyrõ chéve", "imagen": "img/saludo.jpg" },
+    { "titulo": "¿Cómo te llamas?", "lectura": "Mba’éicha nde réra?", "imagen": "img/saludo.jpg" },
+    { "titulo": "Me llamo Ana", "lectura": "Che réra Ana", "imagen": "img/saludo.jpg" },
+    {   "titulo": "¿De dónde eres?", "lectura": "Moõgui reju?", "imagen": "img/saludo.jpg" },
+    { "titulo": "Soy de Bolivia", "lectura": "Che Bolivia-gua", "imagen": "img/saludo.jpg" },
+    { "titulo": "Mucho gusto", "lectura": "Iporãite roikuaávo", "imagen": "img/saludo.jpg" },
+    { "titulo": "Bienvenido", "lectura": "Eguahẽ porãke", "imagen": "img/saludo.jpg" },
+   ],
+  paises:[
+    { "titulo": "Bolivia", "lectura": "Bolivia", "imagen": "img/paises/bolivia.jpg" },
+    { "titulo": "Argentina", "lectura": "Argentina", "imagen": "img/paises/argentina.jpg" },
+    { "titulo": "Brasil", "lectura": "Pindorama", "imagen": "img/paises/brasil.jpg" },
+    { "titulo": "Paraguay", "lectura": "Paraguái", "imagen": "img/paises/paraguay.jpg" },
+    { "titulo": "Uruguay", "lectura": "Uruguái", "imagen": "img/paises/uruguay.jpg" },
+    { "titulo": "Perú", "lectura": "Perú", "imagen": "img/paises/peru.jpg" },
+    { "titulo": "Chile", "lectura": "Chile", "imagen": "img/paises/chile.jpg" },
+    { "titulo": "Colombia", "lectura": "Colombia", "imagen": "img/paises/colombia.jpg" },
+    { "titulo": "Ecuador", "lectura": "Ekuador", "imagen": "img/paises/ecuador.jpg" },
+    { "titulo": "Venezuela", "lectura": "Venesuéla", "imagen": "img/paises/venezuela.jpg" },
+    { "titulo": "México", "lectura": "Méhiko", "imagen": "img/paises/mexico.jpg" },
+    { "titulo": "Estados Unidos", "lectura": "Tetã peteĩ reko Amérikagua", "imagen": "img/paises/estados_unidos.jpg" },
+    { "titulo": "Canadá", "lectura": "Kanadá", "imagen": "img/paises/canada.jpg" },
+    { "titulo": "España", "lectura": "España", "imagen": "img/paises/espana.jpg" },
+    { "titulo": "Francia", "lectura": "Fránsia", "imagen": "img/paises/francia.jpg" },
+    { "titulo": "Italia", "lectura": "Itália", "imagen": "img/paises/italia.jpg" },
+    { "titulo": "Alemania", "lectura": "Alemaña", "imagen": "img/paises/alemania.jpg" },
+    { "titulo": "Inglaterra", "lectura": "Inglaterra", "imagen": "img/paises/inglaterra.jpg" },
+    { "titulo": "Rusia", "lectura": "Rusia", "imagen": "img/paises/rusia.jpg" },
+    { "titulo": "China", "lectura": "Chína", "imagen": "img/paises/china.jpg" },
+    { "titulo": "Japón", "lectura": "Hapõ", "imagen": "img/paises/japon.jpg" },
+    { "titulo": "Corea del Sur", "lectura": "Koréa yvate", "imagen": "img/paises/corea.jpg" }
+   ],
+  verbos:[
+    { "titulo": "Hablar", "lectura": "Ñe’ẽ", "imagen": "img/verbos/hablar.jpg" },
+    { "titulo": "Comer", "lectura": "Karu", "imagen": "img/verbos/comer.jpg" },
+    { "titulo": "Beber", "lectura": "Karugua", "imagen": "img/verbos/beber.jpg" },
+    { "titulo": "Dormir", "lectura": "Kerana", "imagen": "img/verbos/dormir.jpg" },
+    { "titulo": "Caminar", "lectura": "Guata", "imagen": "img/verbos/caminar.jpg" },
+    { "titulo": "Correr", "lectura": "Ñani", "imagen": "img/verbos/correr.jpg" },
+    { "titulo": "Leer", "lectura": "Momba’e", "imagen": "img/verbos/leer.jpg" },
+    { "titulo": "Escribir", "lectura": "Hai", "imagen": "img/verbos/escribir.jpg" },
+    { "titulo": "Mirar", "lectura": "Ma’ẽ", "imagen": "img/verbos/mirar.jpg" },
+    { "titulo": "Escuchar", "lectura": "Hendu", "imagen": "img/verbos/escuchar.jpg" },
+    { "titulo": "Ver", "lectura": "Hecha", "imagen": "img/verbos/ver.jpg" },
+    { "titulo": "Decir", "lectura": "He’i", "imagen": "img/verbos/decir.jpg" },
+    { "titulo": "Hacer", "lectura": "Japo", "imagen": "img/verbos/hacer.jpg" },
+    { "titulo": "Ir", "lectura": "Ho", "imagen": "img/verbos/ir.jpg" },
+    { "titulo": "Venir", "lectura": "Ju", "imagen": "img/verbos/venir.jpg" },
+    { "titulo": "Estudiar", "lectura": "Ñembo’e", "imagen": "img/verbos/estudiar.jpg" },
+    { "titulo": "Trabajar", "lectura": "Mba’apo", "imagen": "img/verbos/trabajar.jpg" },
+    { "titulo": "Jugar", "lectura": "Ñembosarái", "imagen": "img/verbos/jugar.jpg" },
+    { "titulo": "Bailar", "lectura": "Jeroky", "imagen": "img/verbos/bailar.jpg" },
+    { "titulo": "Cantar", "lectura": "Purahéi", "imagen": "img/verbos/cantar.jpg" },
+    { "titulo": "Abrir", "lectura": "Mboty’o", "imagen": "img/verbos/abrir.jpg" },
+    { "titulo": "Cerrar", "lectura": "Mboty", "imagen": "img/verbos/cerrar.jpg" },
+    { "titulo": "Levantarse", "lectura": "Pu’ã", "imagen": "img/verbos/levantarse.jpg" },
+    { "titulo": "Sentarse", "lectura": "Guapy", "imagen": "img/verbos/sentarse.jpg" }
+   ],
+  animales:[
+    { "titulo": "Perro", "lectura": "Jagua", "imagen": "img/animales/perro.jpg" },
+    { "titulo": "Gato", "lectura": "Mbarakaja", "imagen": "img/animales/gato.jpg" },
+    { "titulo": "Vaca", "lectura": "Vaka", "imagen": "img/animales/vaca.jpg" },
+    { "titulo": "Caballo", "lectura": "Kavaju", "imagen": "img/animales/caballo.jpg" },
+    { "titulo": "Gallina", "lectura": "Ryguasu", "imagen": "img/animales/gallina.jpg" },
+    { "titulo": "Gallo", "lectura": "Ryguasu kuimba'e", "imagen": "img/animales/gallo.jpg" },
+    { "titulo": "Pato", "lectura": "Pato", "imagen": "img/animales/pato.jpg" },
+    { "titulo": "Cerdo / Chancho", "lectura": "Kure", "imagen": "img/animales/chancho.jpg" },
+    { "titulo": "Oveja", "lectura": "Ovecha", "imagen": "img/animales/oveja.jpg" },
+    { "titulo": "Mono", "lectura": "Ka’i", "imagen": "img/animales/mono.jpg" },
+    { "titulo": "Tigre / Jaguar", "lectura": "Jaguarete", "imagen": "img/animales/tigre.jpg" },
+    { "titulo": "Puma", "lectura": "Puma", "imagen": "img/animales/puma.jpg" },
+    { "titulo": "Zorro", "lectura": "Aguara", "imagen": "img/animales/zorro.jpg" },
+    { "titulo": "Tortuga", "lectura": "Karumbe", "imagen": "img/animales/tortuga.jpg" },
+    { "titulo": "Pez", "lectura": "Pira", "imagen": "img/animales/pez.jpg" },
+    { "titulo": "Serpiente", "lectura": "Mbói", "imagen": "img/animales/serpiente.jpg" },
+    { "titulo": "Rana", "lectura": "Ju", "imagen": "img/animales/rana.jpg" },
+    { "titulo": "Lagarto", "lectura": "Teju", "imagen": "img/animales/lagarto.jpg" },
+    { "titulo": "Hormiga", "lectura": "Kavaju’i", "imagen": "img/animales/hormiga.jpg" },
+    { "titulo": "Abeja", "lectura": "Panambi", "imagen": "img/animales/abeja.jpg" },
+    { "titulo": "Mariposa", "lectura": "Panambi", "imagen": "img/animales/mariposa.jpg" },
+    { "titulo": "Murciélago", "lectura": "Andai", "imagen": "img/animales/murcielago.jpg" },
+    { "titulo": "Pájaro", "lectura": "Guyra", "imagen": "img/animales/pajaro.jpg" }
+   ],
+  frutas:[
+    { "titulo": "Manzana", "lectura": "Mansána", "imagen": "img/frutas/manzana.jpg" },
+    { "titulo": "Banana / Plátano", "lectura": "Pakova", "imagen": "img/frutas/banana.jpg" },
+    { "titulo": "Naranja", "lectura": "Narã", "imagen": "img/frutas/naranja.jpg" },
+    { "titulo": "Mandarina", "lectura": "Narã mbykymi", "imagen": "img/frutas/mandarina.jpg" },
+    { "titulo": "Limón", "lectura": "Lima", "imagen": "img/frutas/limon.jpg" },
+    { "titulo": "Sandía", "lectura": "Síndy", "imagen": "img/frutas/sandia.jpg" },
+    { "titulo": "Melón", "lectura": "Merõ", "imagen": "img/frutas/melon.jpg" },
+    { "titulo": "Papaya", "lectura": "Mamón", "imagen": "img/frutas/papaya.jpg" },
+    { "titulo": "Mango", "lectura": "Mango", "imagen": "img/frutas/mango.jpg" },
+    { "titulo": "Piña / Ananá", "lectura": "Aña’a", "imagen": "img/frutas/pina.jpg" },
+    { "titulo": "Guayaba", "lectura": "Arazá", "imagen": "img/frutas/guayaba.jpg" },
+    { "titulo": "Frutilla / Fresa", "lectura": "Yvoty’a", "imagen": "img/frutas/fresa.jpg" },
+    { "titulo": "Coco", "lectura": "Kokõ", "imagen": "img/frutas/coco.jpg" },
+    { "titulo": "Uva", "lectura": "Uvã", "imagen": "img/frutas/uva.jpg" },
+    { "titulo": "Durazno", "lectura": "Duráhno", "imagen": "img/frutas/durazno.jpg" },
+    { "titulo": "Pera", "lectura": "Perá", "imagen": "img/frutas/pera.jpg" },
+    { "titulo": "Granada", "lectura": "Kuruguá", "imagen": "img/frutas/granada.jpg" },
+    { "titulo": "Tamarindo", "lectura": "Tamaríndo", "imagen": "img/frutas/tamarindo.jpg" },
+    { "titulo": "Aguacate / Palta", "lectura": "Avokádo", "imagen": "img/frutas/aguacate.jpg" },
+    { "titulo": "Cereza", "lectura": "Seréza", "imagen": "img/frutas/cereza.jpg" },
+    { "titulo": "Higo", "lectura": "Igo", "imagen": "img/frutas/higo.jpg" },
+    { "titulo": "Ciruela", "lectura": "Siruéla", "imagen": "img/frutas/ciruela.jpg" }
+  ],
+  plantas:[
+    { "titulo": "Maíz", "lectura": "Avati", "imagen": "img/plantas/maiz.jpg" },
+    { "titulo": "Yuca / Mandioca", "lectura": "Manduvi", "imagen": "img/plantas/yuca.jpg" },
+    { "titulo": "Papa", "lectura": "Chipa", "imagen": "img/plantas/papa.jpg" },
+    { "titulo": "Camote", "lectura": "Jetepë", "imagen": "img/plantas/camote.jpg" },
+    { "titulo": "Frijol / Poroto", "lectura": "Kumanda", "imagen": "img/plantas/frijol.jpg" },
+    { "titulo": "Achiote", "lectura": "Uruku", "imagen": "img/plantas/achiote.jpg" },
+    { "titulo": "Coca", "lectura": "Koka", "imagen": "img/plantas/coca.jpg" },
+    { "titulo": "Yerba mate", "lectura": "Ka'a", "imagen": "img/plantas/yerba.jpg" },
+    { "titulo": "Cedrón", "lectura": "Kedron", "imagen": "img/plantas/cedron.jpg" },
+    { "titulo": "Manzanilla", "lectura": "Manzanílla", "imagen": "img/plantas/manzanilla.jpg" },
+    { "titulo": "Ortiga", "lectura": "Karáu", "imagen": "img/plantas/ortiga.jpg" },
+    { "titulo": "Hierba buena", "lectura": "Ka'a he'ẽ", "imagen": "img/plantas/hierbabuena.jpg" },
+    { "titulo": "Aloe vera", "lectura": "Karaguatá", "imagen": "img/plantas/aloe.jpg" },
+    { "titulo": "Eucalipto", "lectura": "Yvyrá rovy", "imagen": "img/plantas/eucalipto.jpg" },
+    { "titulo": "Tabaco", "lectura": "Petỹ", "imagen": "img/plantas/tabaco.jpg" },
+    { "titulo": "Menta", "lectura": "Menta", "imagen": "img/plantas/menta.jpg" },
+    { "titulo": "Canela", "lectura": "Kanelá", "imagen": "img/plantas/canela.jpg" },
+    { "titulo": "Clavo de olor", "lectura": "Yvoty koku", "imagen": "img/plantas/clavo.jpg" },
+    { "titulo": "Perejil", "lectura": "Perehil", "imagen": "img/plantas/perejil.jpg" },
+    { "titulo": "Albahaca", "lectura": "Kuratu", "imagen": "img/plantas/albahaca.jpg" },
+    { "titulo": "Cilantro", "lectura": "Kuratu po'i", "imagen": "img/plantas/cilantro.jpg" },
+    { "titulo": "Cebolla", "lectura": "Sevói", "imagen": "img/plantas/cebolla.jpg" }
+  ],
+  colores:[
+    { "titulo": "Rojo", "lectura": "Pytã", "imagen": "img/colores/rojo.jpg" },
+    { "titulo": "Azul", "lectura": "Hovy", "imagen": "img/colores/azul.jpg" },
+    { "titulo": "Amarillo", "lectura": "Sa'yju", "imagen": "img/colores/amarillo.jpg" },
+    { "titulo": "Verde", "lectura": "Hovyũ", "imagen": "img/colores/verde.jpg" },
+    { "titulo": "Negro", "lectura": "Hũ", "imagen": "img/colores/negro.jpg" },
+    { "titulo": "Blanco", "lectura": "Morotĩ", "imagen": "img/colores/blanco.jpg" },
+    { "titulo": "Naranja", "lectura": "Pytã sa'yju", "imagen": "img/colores/naranja.jpg" },
+    { "titulo": "Rosado", "lectura": "Pytã morotĩ", "imagen": "img/colores/rosado.jpg" },
+    { "titulo": "Celeste", "lectura": "Hovy morotĩ", "imagen": "img/colores/celeste.jpg" },
+    { "titulo": "Gris", "lectura": "Hũ morotĩ", "imagen": "img/colores/gris.jpg" },
+    { "titulo": "Marrón / Café", "lectura": "Kafé / Pytã hũ", "imagen": "img/colores/marron.jpg" },
+    { "titulo": "Dorado", "lectura": "Oro sa’y", "imagen": "img/colores/dorado.jpg" },
+    { "titulo": "Plateado", "lectura": "Pláta sa’y", "imagen": "img/colores/plateado.jpg" },
+    { "titulo": "Color claro", "lectura": "Sa'y morotĩ", "imagen": "img/colores/claro.jpg" },
+    { "titulo": "Color oscuro", "lectura": "Sa'y hũ", "imagen": "img/colores/oscuro.jpg" }
+  ],
+};
+
+let currentCategory = null;
+let currentStep = 0;
+
+function selectCategory(cat){
+  currentCategory = tutorialData[cat];
+  currentStep = 0;
+  showStep(currentStep);
+}
+
+function showStep(index){
+  if(!currentCategory) return;
+  if(index<0) index=0;
+  if(index>=currentCategory.length) index=currentCategory.length-1;
+  currentStep = index;
+  const step = currentCategory[currentStep];
+  const content = document.getElementById('tutorial-content');
+  content.innerHTML = `
+    <h3>${step.titulo}</h3>
+    <p>${step.lectura}</p>
+    <img src="${step.imagen}" alt="${step.titulo}">
+  `;
+}
+
+function nextStep(){ 
+  if(currentCategory && currentStep<currentCategory.length-1){ 
+    currentStep++; 
+    showStep(currentStep);
+  }
+}
+
+function prevStep(){
+  if(currentCategory && currentStep>0){ 
+    currentStep--; 
+    showStep(currentStep);
+  }
+}
+</script>
+</head>
+<body>
+
+<header>
+  <h1>Tutorial Interactivo</h1>
+</header>
+
+<div class="tutorial-cats">
+  <button onclick="selectCategory('vocales')">Vocales</button>
+  <button onclick="selectCategory('numeros')">Números</button>
+  <button onclick="selectCategory('abecedario')">Abecedario</button>
+  <button onclick="selectCategory('saludos')">Saludos</button>
+  <button onclick="selectCategory('paises')">Países</button>
+  <button onclick="selectCategory('verbos')">Verbos</button>
+  <button onclick="selectCategory('animales')">Animales</button>
+  <button onclick="selectCategory('frutas')">Frutas</button>
+  <button onclick="selectCategory('plantas')">Plantas</button>
+  <button onclick="selectCategory('colores')">Colores</button>
+</div>
+
+<div id="tutorial-content" class="tutorial-step"></div>
+
+<div class="nav-buttons">
+  <button onclick="prevStep()">Anterior</button>
+  <button onclick="nextStep()">Siguiente</button>
+</div>
+
+<a href="index.html" class="back">Volver al menú</a>
+
+</body>
+</html>

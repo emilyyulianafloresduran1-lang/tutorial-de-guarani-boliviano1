@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examen de Guaraní 📝</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #f0f8ff, #caf0f8);
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    text-align: center;
+    padding: 2rem;
+    background: #0077b6;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  #practica {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  .pregunta {
+    background: #ffffff;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  .pregunta:hover {
+    transform: translateY(-5px);
+  }
+  .pregunta p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .pregunta button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    background: #ade8f4;
+    color: #03045e;
+    font-weight: bold;
+  }
+  .pregunta button:hover {
+    background: #00b4d8;
+    color: #fff;
+    transform: scale(1.05);
+  }
+  .correct {
+    background: #00c851 !important;
+    color: #fff;
+  }
+  .wrong {
+    background: #ff3547 !important;
+    color: #fff;
+  }
+  #resultado-practica {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0077b6;
+  }
+  .reiniciar {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: #ffb703;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .reiniciar:hover {
+    background: #fb8500;
+  }
+  .back {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    color: #0077b6;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .back:hover {
+    color: #023e8a;
+  }
+  /* Barra de progreso */
+  #barra-progreso {
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 1rem 0;
+    height: 20px;
+    overflow: hidden;
+  }
+  #barra-progreso-inner {
+    width: 0;
+    height: 100%;
+    background: #0077b6;
+    transition: width 0.4s;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Examen de Guaraní 📝</h1>
+  <p>Selecciona la traducción correcta para cada palabra</p>
+</header>
+
+<section id="practica">
+  <div id="barra-progreso">
+    <div id="barra-progreso-inner"></div>
+  </div>
+
+  <div id="preguntas-container">
+    <!-- Pregunta 1 -->
+    <div class="pregunta">
+      <p><b>1.</b> ¿Cuál es la traducción correcta de <i>"Perro"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Jagua</button>
+      <button onclick="checkAnswer(this,false)">Mbopi</button>
+      <button onclick="checkAnswer(this,false)">Kure</button>
+    </div>
+    <!-- Pregunta 2 -->
+    <div class="pregunta">
+      <p><b>2.</b> ¿Cuál es la traducción correcta de <i>"Gato"</i>?</p>
+      <button onclick="checkAnswer(this,false)">Mba'e</button>
+      <button onclick="checkAnswer(this,false)">Mburuvicha</button>
+      <button onclick="checkAnswer(this,true)">Mbarakaja</button>
+    </div>
+    <!-- Pregunta 3 -->
+    <div class="pregunta">
+      <p><b>3.</b> ¿Cuál es la traducción correcta de <i>"Agua"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Y</button>
+      <button onclick="checkAnswer(this,false)">Kapi'i</button>
+      <button onclick="checkAnswer(this,false)">Ka'a</button>
+    </div>
+    <!-- Pregunta 4 -->
+    <div class="pregunta">
+      <p><b>4.</b> ¿Cuál es la traducción correcta de <i>"Fuego"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Tata</button>
+      <button onclick="checkAnswer(this,false)">Yvy</button>
+      <button onclick="checkAnswer(this,false)">Jagua</button>
+    </div>
+    <!-- Pregunta 5 -->
+    <div class="pregunta">
+      <p><b>5.</b> ¿Cuál es la traducción correcta de <i>"Casa"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Óga</button>
+      <button onclick="checkAnswer(this,false)">Tata</button>
+      <button onclick="checkAnswer(this,false)">Karai</button>
+    </div>
+    <!-- Pregunta 6 -->
+    <div class="pregunta">
+      <p><b>6.</b> ¿Cuál es la traducción correcta de <i>"Sol"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Kuarahy</button>
+      <button onclick="checkAnswer(this,false)">Jasy</button>
+      <button onclick="checkAnswer(this,false)">Yvy</button>
+    </div>
+    <!-- Pregunta 7 -->
+    <div class="pregunta">
+      <p><b>7.</b> ¿Cuál es la traducción correcta de <i>"Luna"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Jasy</button>
+      <button onclick="checkAnswer(this,false)">Kuarahy</button>
+      <button onclick="checkAnswer(this,false)">Tata</button>
+    </div>
+    <!-- Pregunta 8 -->
+    <div class="pregunta">
+      <p><b>8.</b> ¿Cuál es la traducción correcta de <i>"Tierra"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Yvy</button>
+      <button onclick="checkAnswer(this,false)">Y</button>
+      <button onclick="checkAnswer(this,false)">Ka'a</button>
+    </div>
+    <!-- Pregunta 9 -->
+    <div class="pregunta">
+      <p><b>9.</b> ¿Cuál es la traducción correcta de <i>"Maíz"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Avati</button>
+      <button onclick="checkAnswer(this,false)">Mba'e</button>
+      <button onclick="checkAnswer(this,false)">Jasy</button>
+    </div>
+    <!-- Pregunta 10 -->
+    <div class="pregunta">
+      <p><b>10.</b> ¿Cuál es la traducción correcta de <i>"Cielo"</i>?</p>
+      <button onclick="checkAnswer(this,true)">Yvágape</button>
+      <button onclick="checkAnswer(this,false)">Óga</button>
+      <button onclick="checkAnswer(this,false)">Tata</button>
+    </div>
+  </div>
+
+  <div id="resultado-practica"></div>
+
+  <div style="text-align:center; margin-top:2rem;">
+    <button class="reiniciar" onclick="reiniciarPractica()">🔁 Reiniciar examen</button>
+  </div>
+  <a href="index.html" class="back">Volver al menú</a>
+</section>
+
+<script>
+let score = 0;
+let total = 10;
+let answered = 0;
+
+function checkAnswer(button, isCorrect) {
+  const buttons = button.parentElement.querySelectorAll("button");
+  buttons.forEach(b => b.disabled = true);
+
+  if (isCorrect) button.classList.add("correct");
+  else button.classList.add("wrong");
+
+  if (isCorrect) score++;
+  answered++;
+
+  // Actualizar barra de progreso
+  const barra = document.getElementById("barra-progreso-inner");
+  barra.style.width = ((answered / total) * 100) + "%";
+
+  if (answered === total) {
+    const result = document.getElementById("resultado-practica");
+    let message = `Tu puntuación final: ${score} / ${total} 🌟<br>`;
+    if (score === total) message += "¡Excelente! 🥳";
+    else if (score >= 7) message += "¡Muy bien! 💪";
+    else if (score >= 4) message += "Vas bien, pero puedes mejorar 🌱";
+    else message += "¡Ánimo! Practica más 💬";
+    result.innerHTML = message;
+  }
+}
+
+function reiniciarPractica() {
+  score = 0; answered = 0;
+  document.getElementById("resultado-practica").innerHTML = "";
+  document.getElementById("barra-progreso-inner").style.width = "0";
+  document.querySelectorAll("#practica button").forEach(btn => {
+    btn.disabled = false;
+    btn.classList.remove("correct","wrong");
+  });
+}
+</script>
+
+</body>
+</html>

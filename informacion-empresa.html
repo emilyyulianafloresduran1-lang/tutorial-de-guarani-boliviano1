@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guaraní Boliviano - Información</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f4f8;
+    scroll-behavior: smooth;
+  }
+
+  header {
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  }
+  header p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: -50px auto 3rem;
+    padding: 0 1rem;
+  }
+
+  .card {
+    background: white;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+  }
+
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card img {
+    width: 180px;
+    border-radius: 20px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .card img:hover {
+    transform: scale(1.05);
+  }
+
+  .card div {
+    flex: 1;
+  }
+  .card h2 {
+    margin-top: 0;
+    color: #0077b6;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+  }
+  .card h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #00b4d8;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  .card p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  a.back {
+    display: inline-block;
+    margin: 2rem auto;
+    text-align: center;
+    width: 200px;
+    padding: 0.8rem;
+    background: #0077b6;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s;
+  }
+  a.back:hover {
+    background: #00b4d8;
+    transform: scale(1.05);
+  }
+
+  @media(max-width: 700px) {
+    .card {
+      flex-direction: column;
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Guaraní Boliviano</h1>
+  <p>Aprende, descubre y valora nuestra lengua ancestral</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1599058917216-5b85b2d11f53?auto=format&fit=crop&w=400&q=80" alt="Objetivo">
+    <div>
+      <h2>Objetivo</h2>
+      <p>Desarrollar un aprendizaje interactivo y divertido del Guaraní boliviano, permitiendo que los niños y usuarios descubran, hablen, lean y escriban este idioma ancestral, mientras valoran su cultura y fortalecen su identidad.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1565372917383-0b64b57b3aa6?auto=format&fit=crop&w=400&q=80" alt="Misión">
+    <div>
+      <h2>Misión</h2>
+      <p>Enseñar el Guaraní boliviano de manera práctica, lúdica y significativa, a través de tutoriales, ejercicios y actividades interactivas, promoviendo el respeto por las raíces culturales y fomentando el amor por la lengua ancestral desde la escuela y la comunidad.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1581092915601-6442d945a0a0?auto=format&fit=crop&w=400&q=80" alt="Visión">
+    <div>
+      <h2>Visión</h2>
+      <p>Ser un proyecto educativo de referencia en la enseñanza del Guaraní boliviano, donde los niños y usuarios aprendan el idioma de manera natural, valoren su herencia cultural y crezcan como ciudadanos capaces de transmitir este conocimiento a futuras generaciones.</p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back">← Volver al menú</a>
+</div>
+
+<script>
+  // Animación al hacer scroll
+  const cards = document.querySelectorAll('.card');
+  function revealCards() {
+    const triggerBottom = window.innerHeight / 1.1;
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      if(cardTop < triggerBottom) {
+        card.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealCards);
+  window.addEventListener('load', revealCards);
+</script>
+
+</body>
+</html>
