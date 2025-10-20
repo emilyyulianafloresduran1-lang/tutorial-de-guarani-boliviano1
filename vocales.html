@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vocales en Guaraní — Escritura, Lectura y Sonido</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #f7fbff;
+      --accent-1: #2b6cb0;
+      --accent-2: #1cc88a;
+      --muted: #6b7280;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg-1); color:#0f172a;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,var(--accent-1),#4aa3d8); color:#fff; padding:3.5rem 1rem; border-radius:0 0 2rem 2rem; box-shadow:0 8px 30px rgba(43,108,176,0.12);}
+    .hero .lead{opacity:.95}
+
+    /* GRID */
+    .vowel-card{border-radius:1rem; overflow:hidden; background:#fff; box-shadow:0 8px 24px rgba(16,24,40,0.06); transition:transform .28s ease, box-shadow .28s ease}
+    .vowel-card:hover{transform:translateY(-8px); box-shadow:0 18px 40px rgba(16,24,40,0.12)}
+    .vowel-image{width:100%; height:180px; object-fit:cover; display:block}
+
+    .vowel-body{padding:1.25rem}
+    .vowel-letter{font-size:3.25rem; font-weight:800; color:var(--accent-1); line-height:1}
+    .ipa{font-family:SFMono-Regular,Menlo,Monaco,monospace; background:rgba(15,23,42,0.03); padding:.15rem .4rem; border-radius:.35rem}
+
+    /* Botones */
+    .btn-audio{border-radius:999px; padding:.45rem .75rem; box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    .btn-info{border-radius:8px}
+
+    /* Modal custom */
+    .modal-header{background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#fff}
+
+    /* Responsive tweaks */
+    @media (min-width:768px){ .vowel-image{height:200px} }
+    @media (min-width:992px){ .vowel-letter{font-size:3.8rem} }
+
+    /* Footer */
+    footer{margin-top:3rem}
+
+    /* Decorative */
+    .badge-nasal{background:#fde68a; color:#92400e; font-weight:700}
+  </style>
+</head>
+<body>
+  <header class="hero mb-5">
+    <div class="container text-center">
+      <h1 class="display-6 fw-bold">Vocales en Guaraní</h1>
+      <p class="lead">Escritura — Lectura — Sonido. Pulsa el botón 🔊 para escuchar o ℹ️ para ver ejemplos y traducciones.</p>
+      <a href="#vocales" class="btn btn-light btn-lg mt-2">Ir a las vocales</a>
+    </div>
+  </header>
+
+  <main class="container" id="vocales">
+    <div class="row g-4">
+      <!-- We'll list the vowels: a,e,i,o,u and nasal versions with badges -->
+
+      <!-- A -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60" alt="A - árbol">
+          <div class="vowel-body text-center">
+            <div class="vowel-letter">A</div>
+            <p class="mb-1"><span class="ipa">/a/</span> — <strong>a</strong> como en <em>casa</em></p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="a" aria-label="Escuchar A"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-up me-1" viewBox="0 0 16 16"><path d="M11.536 14.01a.5.5 0 0 1-.708-.706A6.002 6.002 0 0 0 12 8c0-1.657-.672-3.156-1.772-4.229a.5.5 0 1 1 .707-.707A7.002 7.002 0 0 1 13 8a7.002 7.002 0 0 1-1.464 4.01z"/><path d="M10.448 11.05a.5.5 0 0 1-.707-.707 3 3 0 0 0 0-3.586.5.5 0 1 1 .707-.707 4 4 0 0 1 0 5.0z"/><path d="M7.5 3.5v9l-4-3H1.5a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5H3.5l4-3z"/></svg>Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="A" data-text="A — /a/ — Ejemplo en guaraní: 'Yvyra' (árbol) — traducción: árbol">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ã (nasal A) -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=1200&q=60" alt="Ã - nasal">
+          <div class="vowel-body text-center">
+            <div class="d-flex justify-content-center gap-2 align-items-center">
+              <div class="vowel-letter">ã</div>
+              <span class="badge badge-nasal">nasal</span>
+            </div>
+            <p class="mb-1"><span class="ipa">/ã/</span> — Vocal nasal, pronunciación con resonancia en la nariz.</p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="an" aria-label="Escuchar Ã">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="ã" data-text="ã — vocal nasal. Ejemplo en guaraní: 'ãga' (venir) — traducción aproximada: venir">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- E -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60" alt="E - estrella">
+          <div class="vowel-body text-center">
+            <div class="vowel-letter">E</div>
+            <p class="mb-1"><span class="ipa">/e/</span> — <strong>e</strong> como en <em>mesa</em></p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="e" aria-label="Escuchar E">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="E" data-text="E — /e/ — Ejemplo en guaraní: 'Mbyja' (estrella) — traducción: estrella">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ẽ nasal E -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=1200&q=60" alt="ẽ - nasal e">
+          <div class="vowel-body text-center">
+            <div class="d-flex justify-content-center gap-2 align-items-center">
+              <div class="vowel-letter">ẽ</div>
+              <span class="badge badge-nasal">nasal</span>
+            </div>
+            <p class="mb-1"><span class="ipa">/ẽ/</span> — Vocal nasal.</p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="en" aria-label="Escuchar ẽ">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="ẽ" data-text="ẽ — vocal nasal. Ejemplo: 'ẽme' — (venir nasal) — traducción aproximada: venir">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- I -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1526406915893-5f9e8d4b5a45?auto=format&fit=crop&w=1200&q=60" alt="I - isla">
+          <div class="vowel-body text-center">
+            <div class="vowel-letter">I</div>
+            <p class="mb-1"><span class="ipa">/i/</span> — <strong>i</strong> como en <em>vino</em></p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="i" aria-label="Escuchar I">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="I" data-text="I — /i/ — Ejemplo en guaraní: 'Iguá' (isla) — traducción: isla">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ĩ nasal I -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1200&q=60" alt="ĩ - nasal i">
+          <div class="vowel-body text-center">
+            <div class="d-flex justify-content-center gap-2 align-items-center">
+              <div class="vowel-letter">ĩ</div>
+              <span class="badge badge-nasal">nasal</span>
+            </div>
+            <p class="mb-1"><span class="ipa">/ĩ/</span> — Vocal nasal.</p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="in" aria-label="Escuchar ĩ">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="ĩ" data-text="ĩ — vocal nasal. Ejemplo: 'ĩga' — (palabra nasal) — traducción aproximada">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- O -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60" alt="O - océano">
+          <div class="vowel-body text-center">
+            <div class="vowel-letter">O</div>
+            <p class="mb-1"><span class="ipa">/o/</span> — <strong>o</strong> como en <em>loco</em></p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="o" aria-label="Escuchar O">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="O" data-text="O — /o/ — Ejemplo en guaraní: 'Oga' (casa) — traducción: casa">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- õ nasal O -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=60" alt="õ - nasal o">
+          <div class="vowel-body text-center">
+            <div class="d-flex justify-content-center gap-2 align-items-center">
+              <div class="vowel-letter">õ</div>
+              <span class="badge badge-nasal">nasal</span>
+            </div>
+            <p class="mb-1"><span class="ipa">/õ/</span> — Vocal nasal.</p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="on" aria-label="Escuchar õ">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="õ" data-text="õ — vocal nasal. Ejemplo: 'õga' — (forma nasal) — traducción aproximada">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- U -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=60" alt="U - uva">
+          <div class="vowel-body text-center">
+            <div class="vowel-letter">U</div>
+            <p class="mb-1"><span class="ipa">/u/</span> — <strong>u</strong> como en <em>uno</em></p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="u" aria-label="Escuchar U">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="U" data-text="U — /u/ — Ejemplo en guaraní: 'Uva' — traducción: uva">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ũ nasal U -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="vowel-card h-100">
+          <img class="vowel-image" src="https://images.unsplash.com/photo-1470115636492-6d2b56f9140f?auto=format&fit=crop&w=1200&q=60" alt="ũ - nasal u">
+          <div class="vowel-body text-center">
+            <div class="d-flex justify-content-center gap-2 align-items-center">
+              <div class="vowel-letter">ũ</div>
+              <span class="badge badge-nasal">nasal</span>
+            </div>
+            <p class="mb-1"><span class="ipa">/ũ/</span> — Vocal nasal.</p>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+              <button class="btn btn-primary btn-audio" data-vowel="un" aria-label="Escuchar ũ">🔊 Escuchar</button>
+              <button class="btn btn-outline-secondary btn-info" data-bs-toggle="modal" data-bs-target="#infoModal" data-title="ũ" data-text="ũ — vocal nasal. Ejemplo: 'ũga' — (palabra nasal) — traducción aproximada">ℹ️ Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- small helper text -->
+    <div class="row mt-4">
+      <div class="col-md-10 mx-auto">
+        <div class="p-3 bg-white rounded-3 shadow-sm">
+          <h5 class="mb-2">Nota para docentes</h5>
+          <p class="mb-0 text-muted">Usa los botones de audio para practicar la pronunciación en clase. Los botones 'Info' abren ejemplos y traducciones; puedes editar el texto del modal según el vocabulario que enseñes.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal (reusable) -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infoModalLabel">Detalle</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p id="infoText">Contenido</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-4 text-center">
+    <small class="text-muted">© 2025 — Aprendiendo Guaraní</small>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Reusable modal content population
+    const infoModal = document.getElementById('infoModal');
+    infoModal.addEventListener('show.bs.modal', event => {
+      const button = event.relatedTarget;
+      const title = button.getAttribute('data-title') || 'Detalle';
+      const text = button.getAttribute('data-text') || '';
+      infoModal.querySelector('.modal-title').textContent = title;
+      infoModal.querySelector('#infoText').textContent = text;
+    });
+
+    // Audio: Use Web Speech API for flexible pronunciation (fallback if external audio not provided)
+    function speakText(text, lang='gn'){
+      if ('speechSynthesis' in window){
+        const utter = new SpeechSynthesisUtterance(text);
+        // try Guaraní locale; browsers may fall back if not available
+        utter.lang = lang;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utter);
+      } else {
+        alert('Tu navegador no soporta síntesis de voz.');
+      }
+    }
+
+    // Map vowel keys to spoken text (simple approximation). For nasal vowels we add 'nasal' to the text so speaker may emphasize.
+    const vowelMap = {
+      'a': 'a', 'an': 'a nasal',
+      'e': 'e', 'en': 'e nasal',
+      'i': 'i', 'in': 'i nasal',
+      'o': 'o', 'on': 'o nasal',
+      'u': 'u', 'un': 'u nasal'
+    };
+
+    document.querySelectorAll('.btn-audio').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-vowel');
+        const text = vowelMap[key] || key;
+        // Prefer Guaraní locale 'gn', fallback to 'es-ES'
+        speakText(text, 'gn')
+      });
+    });
+  </script>
+</body>
+</html>

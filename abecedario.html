@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abecedario Español y Guaraní</title>
+<style>
+/* ===== Estilos CSS ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+}
+
+header h1 {
+    margin: 0.5rem 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+}
+
+.alphabet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 2rem;
+}
+
+.letter-btn {
+    background: #ffffffbb;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.letter-btn:hover {
+    background: #4e73df;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.letter-info {
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    background: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.letter-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.letter-info p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+audio {
+    margin-top: 1rem;
+    outline: none;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🌟 Abecedario Español y Guaraní</h1>
+    <p>Haz clic en cada letra para escuchar, leer y escribir</p>
+</header>
+
+<main>
+    <section class="alphabet-container">
+        <!-- Botones de todas las letras -->
+        <button class="letter-btn" data-letter="A">A</button>
+       
+       
+       
+        <button class="letter-btn" data-letter="E">E</button>
+        
+        <button class="letter-btn" data-letter="G">G</button>
+        <button class="letter-btn" data-letter="H">H</button>
+        <button class="letter-btn" data-letter="I">I</button>
+        <button class="letter-btn" data-letter="J">J</button>
+        <button class="letter-btn" data-letter="K">K</button>
+        <button class="letter-btn" data-letter="L">L</button>
+        <button class="letter-btn" data-letter="M">M</button>
+        <button class="letter-btn" data-letter="N">N</button>
+        <button class="letter-btn" data-letter="Ñ">Ñ</button>
+        <button class="letter-btn" data-letter="O">O</button>
+        <button class="letter-btn" data-letter="P">P</button>
+        
+        <button class="letter-btn" data-letter="R">R</button>
+        <button class="letter-btn" data-letter="S">S</button>
+        <button class="letter-btn" data-letter="T">T</button>
+        <button class="letter-btn" data-letter="U">U</button>
+        <button class="letter-btn" data-letter="V">V</button>
+       
+       
+        <button class="letter-btn" data-letter="Y">Y</button>
+        
+        <button class="letter-btn" data-letter="Ã">Ã</button>
+        <button class="letter-btn" data-letter="ʼ">ʼ</button>
+    </section>
+
+    <section class="letter-info">
+        <h2 id="letter-title">Letra</h2>
+        <p id="letter-language">Idioma: </p>
+        <p id="letter-pronunciation">Pronunciación: </p>
+        <p id="letter-writing">Escritura: </p>
+        <p id="letter-example">Ejemplo: </p>
+        <audio id="letter-audio" controls>
+            <source id="audio-src" src="" type="audio/mp3">
+            Tu navegador no soporta audio.
+        </audio>
+    </section>
+</main>
+
+<script>
+/* ===== JavaScript completo ===== */
+const letters = {
+    "A": {language: "Español / Guaraní", pron: "/a/", writing: "A", example: "casa / avañe’ẽ", audio: "audio/A.mp3"},
+    
+   
+   
+    "E": {language: "Español / Guaraní", pron: "/e/", writing: "E", example: "mesa / eju", audio: "audio/E.mp3"},
+   
+    "G": {language: "Español / Guaraní", pron: "/g/ o /x/", writing: "G", example: "gato / guasu", audio: "audio/G.mp3"},
+    "H": {language: "Español / Guaraní", pron: "muda / /h/", writing: "H", example: "hola / heta", audio: "audio/H.mp3"},
+    "I": {language: "Español / Guaraní", pron: "/i/", writing: "I", example: "isla / iporã", audio: "audio/I.mp3"},
+    "J": {language: "Español / Guaraní", pron: "/x/ /ʒ/", writing: "J", example: "jamón / jasy", audio: "audio/J.mp3"},
+    "K": {language: "Español / Guaraní", pron: "/k/", writing: "K", example: "kilo / karai", audio: "audio/K.mp3"},
+    "L": {language: "Español / Guaraní", pron: "/l/", writing: "L", example: "lago / loma", audio: "audio/L.mp3"},
+    "M": {language: "Español / Guaraní", pron: "/m/", writing: "M", example: "mano / mbaraka", audio: "audio/M.mp3"},
+    "N": {language: "Español / Guaraní", pron: "/n/", writing: "N", example: "nariz / ne", audio: "audio/N.mp3"},
+    "Ñ": {language: "Español / Guaraní", pron: "/ɲ/", writing: "Ñ", example: "niño / ñemity", audio: "audio/Ñ.mp3"},
+    "O": {language: "Español / Guaraní", pron: "/o/", writing: "O", example: "oso / opa", audio: "audio/O.mp3"},
+    "P": {language: "Español / Guaraní", pron: "/p/", writing: "P", example: "perro / pytã", audio: "audio/P.mp3"},
+    
+    "R": {language: "Español / Guaraní", pron: "/ɾ/ o /r/", writing: "R", example: "caro / roga", audio: "audio/R.mp3"},
+    "S": {language: "Español / Guaraní", pron: "/s/", writing: "S", example: "sol / sy", audio: "audio/S.mp3"},
+    "T": {language: "Español / Guaraní", pron: "/t/", writing: "T", example: "taza / tata", audio: "audio/T.mp3"},
+    "U": {language: "Español / Guaraní", pron: "/u/", writing: "U", example: "uno / umi", audio: "audio/U.mp3"},
+    "V": {language: "Español / Guaraní", pron: "/b/ o /v/", writing: "V", example: "vaso / vaca", audio: "audio/V.mp3"},
+   
+   
+    "Y": {language: "Español / Guaraní", pron: "/ʝ/ o /ɨ/", writing: "Y", example: "rey / yvoty", audio: "audio/Y.mp3"},
+   
+    "Ã": {language: "Guaraní", pron: "/ã/ (nasalizada)", writing: "Ã", example: "ỹvoty", audio: "audio/Ã.mp3"},
+    "ʼ": {language: "Guaraní", pron: "golpe de glotis", writing: "ʼ", example: "ʼỹ", audio: "audio/ʼ.mp3"}
+};
+
+const buttons = document.querySelectorAll('.letter-btn');
+const title = document.getElementById('letter-title');
+const language = document.getElementById('letter-language');
+const pronunciation = document.getElementById('letter-pronunciation');
+const writing = document.getElementById('letter-writing');
+const example = document.getElementById('letter-example');
+const audio = document.getElementById('letter-audio');
+const audioSrc = document.getElementById('audio-src');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const letter = button.dataset.letter;
+        const info = letters[letter];
+        if(info){
+            title.textContent = `Letra: ${letter}`;
+            language.textContent = `Idioma: ${info.language}`;
+            pronunciation.textContent = `Pronunciación: ${info.pron}`;
+            writing.textContent = `Escritura: ${info.writing}`;
+            example.textContent = `Ejemplo: ${info.example}`;
+            audioSrc.src = info.audio; 
+            audio.load();
+            audio.play();
+        }
+    });
+});
+</script>
+
+</body>
+</html>

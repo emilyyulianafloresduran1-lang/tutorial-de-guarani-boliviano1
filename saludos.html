@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saludos en Guaraní Boliviano</title>
+<style>
+/* ===== Estilos CSS ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(120deg,#a8edea,#fed6e3);
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(255,255,255,0.4);
+    backdrop-filter: blur(5px);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    gap: 20px;
+}
+
+.greeting-card {
+    background: rgba(255,255,255,0.4);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.greeting-card:hover {
+    transform: scale(1.05);
+}
+
+.greeting-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.greeting-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.greeting-card p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: #4e73df;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2b59c3;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Saludos Básicos en Guaraní Boliviano</h1>
+    <p>Haz clic en el botón para escuchar la pronunciación</p>
+</header>
+
+<main class="main-container">
+    <!-- Hola -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/2cOaJ.png" alt="Hola">
+        <h2>Hola</h2>
+        <p>Guaraní: <strong>Avy’a</strong></p>
+        <button onclick="playAudio('hola')">🔊 Escuchar</button>
+        <audio id="audio-hola">
+            <source src="audio/Avya.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Buenos días -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/Z1X8L.png" alt="Buenos días">
+        <h2>Buenos días</h2>
+        <p>Guaraní: <strong>Mba'éichapa</strong></p>
+        <button onclick="playAudio('buenosdias')">🔊 Escuchar</button>
+        <audio id="audio-buenosdias">
+            <source src="audio/Mbaeichapa.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Buenas tardes -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/vC1xH.png" alt="Buenas tardes">
+        <h2>Buenas tardes</h2>
+        <p>Guaraní: <strong>Ipohára</strong></p>
+        <button onclick="playAudio('buenastardes')">🔊 Escuchar</button>
+        <audio id="audio-buenastardes">
+            <source src="audio/Ipohara.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Buenas noches -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/UH3IPX.png" alt="Buenas noches">
+        <h2>Buenas noches</h2>
+        <p>Guaraní: <strong>Jaikóta porã</strong></p>
+        <button onclick="playAudio('buenasnoches')">🔊 Escuchar</button>
+        <audio id="audio-buenasnoches">
+            <source src="audio/JaikotaPora.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Adiós -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/8y4r9.png" alt="Adiós">
+        <h2>Adiós</h2>
+        <p>Guaraní: <strong>Jajotopáta</strong></p>
+        <button onclick="playAudio('adios')">🔊 Escuchar</button>
+        <audio id="audio-adios">
+            <source src="audio/Jajotopata.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Gracias -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/FNQFz.png" alt="Gracias">
+        <h2>Gracias</h2>
+        <p>Guaraní: <strong>Aguyje</strong></p>
+        <button onclick="playAudio('gracias')">🔊 Escuchar</button>
+        <audio id="audio-gracias">
+            <source src="audio/Aguyje.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Por favor -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/X8Ept.png" alt="Por favor">
+        <h2>Por favor</h2>
+        <p>Guaraní: <strong>Nderehe</strong></p>
+        <button onclick="playAudio('porfavor')">🔊 Escuchar</button>
+        <audio id="audio-porfavor">
+            <source src="audio/Nderehe.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Perdón -->
+    <div class="greeting-card">
+        <img src="https://i.imgur.com/9m0yf.png" alt="Perdón">
+        <h2>Perdón</h2>
+        <p>Guaraní: <strong>Porandúta</strong></p>
+        <button onclick="playAudio('perdon')">🔊 Escuchar</button>
+        <audio id="audio-perdon">
+            <source src="audio/Poranduta.mp3" type="audio/mp3">
+        </audio>
+    </div>
+</main>
+
+<script>
+/* ===== JavaScript para reproducir audio ===== */
+function playAudio(id){
+    const audioElement = document.getElementById('audio-' + id);
+    if(audioElement){
+        audioElement.play();
+    }
+}
+</script>
+
+</body>
+</html>
+

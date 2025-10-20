@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colores en Guaraní Boliviano</title>
+  <style>
+    /* ===== ESTILO GENERAL ===== */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top, #0a1f44, #001f2d);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 3em;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .color-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px #00f0ff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .color-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff00ff;
+    }
+
+    .color-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #00f0ff;
+    }
+
+    .color-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .color-guarani {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #00ffea;
+    }
+
+    .play-btn {
+      cursor: pointer;
+      padding: 10px 15px;
+      background: #00f0ff;
+      color: #001f2d;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .play-btn:hover {
+      background: #ff00ff;
+      color: white;
+    }
+
+    /* ===== EFECTO DE LUCES LED ===== */
+    .led {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .led span {
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 5px;
+      background: #00f0ff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: blink 3s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="led" id="ledContainer"></div>
+
+  <h1>Colores en Guaraní Boliviano</h1>
+
+  <div class="container">
+    <!-- Rojo -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/FF0000/FFFFFF?text=Rojo" alt="Rojo">
+      <div class="color-name">Rojo</div>
+      <div class="color-guarani">pytã</div>
+      <button class="play-btn" onclick="playAudio('rojo')">🔊 Escuchar</button>
+      <audio id="rojo" src="audios/rojo.mp3"></audio>
+    </div>
+
+    <!-- Azul -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/0000FF/FFFFFF?text=Azul" alt="Azul">
+      <div class="color-name">Azul</div>
+      <div class="color-guarani">hovy</div>
+      <button class="play-btn" onclick="playAudio('azul')">🔊 Escuchar</button>
+      <audio id="azul" src="audios/azul.mp3"></audio>
+    </div>
+
+    <!-- Blanco -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/FFFFFF/000000?text=Blanco" alt="Blanco">
+      <div class="color-name">Blanco</div>
+      <div class="color-guarani">morotĩ</div>
+      <button class="play-btn" onclick="playAudio('blanco')">🔊 Escuchar</button>
+      <audio id="blanco" src="audios/blanco.mp3"></audio>
+    </div>
+
+    <!-- Verde -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/00FF00/FFFFFF?text=Verde" alt="Verde">
+      <div class="color-name">Verde</div>
+      <div class="color-guarani">hovyū</div>
+      <button class="play-btn" onclick="playAudio('verde')">🔊 Escuchar</button>
+      <audio id="verde" src="audios/verde.mp3"></audio>
+    </div>
+
+    <!-- Negro -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/000000/FFFFFF?text=Negro" alt="Negro">
+      <div class="color-name">Negro</div>
+      <div class="color-guarani">hũ</div>
+      <button class="play-btn" onclick="playAudio('negro')">🔊 Escuchar</button>
+      <audio id="negro" src="audios/negro.mp3"></audio>
+    </div>
+
+    <!-- Amarillo -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/FFFF00/000000?text=Amarillo" alt="Amarillo">
+      <div class="color-name">Amarillo</div>
+      <div class="color-guarani">sa'ju</div>
+      <button class="play-btn" onclick="playAudio('amarillo')">🔊 Escuchar</button>
+      <audio id="amarillo" src="audios/amarillo.mp3"></audio>
+    </div>
+
+    <!-- Rosado -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/FFC0CB/000000?text=Rosado" alt="Rosado">
+      <div class="color-name">Rosado</div>
+      <div class="color-guarani">pytãngy</div>
+      <button class="play-btn" onclick="playAudio('rosado')">🔊 Escuchar</button>
+      <audio id="rosado" src="audios/rosado.mp3"></audio>
+    </div>
+
+    <!-- Violeta / Morado -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/800080/FFFFFF?text=Violeta" alt="Violeta">
+      <div class="color-name">Violeta / Morado</div>
+      <div class="color-guarani">pytãũ (o hovyũ)</div>
+      <button class="play-btn" onclick="playAudio('violeta')">🔊 Escuchar</button>
+      <audio id="violeta" src="audios/violeta.mp3"></audio>
+    </div>
+
+    <!-- Gris -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/808080/FFFFFF?text=Gris" alt="Gris">
+      <div class="color-name">Gris</div>
+      <div class="color-guarani">hũngy</div>
+      <button class="play-btn" onclick="playAudio('gris')">🔊 Escuchar</button>
+      <audio id="gris" src="audios/gris.mp3"></audio>
+    </div>
+
+    <!-- Anaranjado -->
+    <div class="color-card">
+      <img src="https://via.placeholder.com/100/FFA500/FFFFFF?text=Anaranjado" alt="Anaranjado">
+      <div class="color-name">Anaranjado</div>
+      <div class="color-guarani">pytãyjú</div>
+      <button class="play-btn" onclick="playAudio('anaranjado')">🔊 Escuchar</button>
+      <audio id="anaranjado" src="audios/anaranjado.mp3"></audio>
+    </div>
+  </div>
+
+  <script>
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      audio.play();
+    }
+
+    // Luces LED aleatorias
+    const ledContainer = document.getElementById('ledContainer');
+    for (let i = 0; i < 100; i++) {
+      const span = document.createElement('span');
+      span.style.top = Math.random() * 100 + '%';
+      span.style.left = Math.random() * 100 + '%';
+      span.style.width = (2 + Math.random() * 4) + 'px';
+      span.style.height = span.style.width;
+      span.style.animationDuration = (2 + Math.random() * 3) + 's';
+      ledContainer.appendChild(span);
+    }
+  </script>
+</body>
+</html>
